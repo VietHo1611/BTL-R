@@ -8,17 +8,17 @@ library(ggplot2)
 library(dplyr)
 
 # 1. Thu thập dữ liệu giá cổ phiếu của Vinamilk (VNM)
-# Dữ liệu giá cổ phiếu VNM từ Yahoo Finance
-tickers <- c("VNM.VN", "MSN.VN", "FPT.VN")  # Thêm các cổ phiếu khác vào danh mục
-getSymbols(tickers, src = "yahoo", from = "2019-01-01", to = Sys.Date())
-library(zoo)
-VNM.VN <- na.approx(VNM.VN)
-vnm_price <- Cl(VNM.VN)  # Chỉ lấy giá đóng cửa
-
 #Xử lý mising data
 VNM.VN <- na.approx(VNM.VN)
 MSN.VN <- na.approx(MSN.VN)
 FPT.VN <- na.approx(FPT.VN)
+
+# Dữ liệu giá cổ phiếu VNM từ Yahoo Finance
+tickers <- c("VNM.VN", "MSN.VN", "FPT.VN")  # Thêm các cổ phiếu khác vào danh mục
+getSymbols(tickers, src = "yahoo", from = "2019-01-01", to = Sys.Date())
+library(zoo)
+vnm_price <- Cl(VNM.VN)  # Chỉ lấy giá đóng cửa
+
 
 #Head data
 head(VNM.VN)
